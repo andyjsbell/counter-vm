@@ -8,8 +8,8 @@ set -o pipefail
 # Set the PATHS
 GOPATH="$(go env GOPATH)"
 
-# TimestampVM root directory
-TIMESTAMPVM_PATH=$( cd "$( dirname "${BASH_SOURCE[0]}" )"; cd .. && pwd )
+# CounterVM root directory
+COUNTERVM_PATH=$( cd "$( dirname "${BASH_SOURCE[0]}" )"; cd .. && pwd )
 
 # Set default binary directory location
 binary_directory="$GOPATH/src/github.com/ava-labs/avalanchego/build/plugins"
@@ -21,11 +21,11 @@ elif [[ $# -eq 2 ]]; then
     binary_directory=$1
     name=$2
 elif [[ $# -ne 0 ]]; then
-    echo "Invalid arguments to build timestampvm. Requires either no arguments (default) or one arguments to specify binary location."
+    echo "Invalid arguments to build countervm. Requires either no arguments (default) or one arguments to specify binary location."
     exit 1
 fi
 
 
 # Build timestampvm, which is run as a subprocess
-echo "Building timestampvm in $binary_directory/$name"
+echo "Building countervm in $binary_directory/$name"
 go build -o "$binary_directory/$name" "main/"*.go

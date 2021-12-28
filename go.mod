@@ -1,4 +1,4 @@
-module github.com/ava-labs/timestampvm
+module github.com/ava-labs/countervm
 
 go 1.16
 

@@ -11,7 +11,7 @@ import (
 	log "github.com/inconshreveable/log15"
 
 	"github.com/ava-labs/avalanchego/vms/rpcchainvm"
-	"github.com/ava-labs/timestampvm/timestampvm"
+	"github.com/ava-labs/countervm/countervm"
 )
 
 func main() {
@@ -22,7 +22,7 @@ func main() {
 	}
 	// Print VM ID and exit
 	if version {
-		fmt.Printf("%s@%s\n", timestampvm.Name, timestampvm.Version)
+		fmt.Printf("%s@%s\n", countervm.Name, countervm.Version)
 		os.Exit(0)
 	}
 
@@ -30,7 +30,7 @@ func main() {
 	plugin.Serve(&plugin.ServeConfig{
 		HandshakeConfig: rpcchainvm.Handshake,
 		Plugins: map[string]plugin.Plugin{
-			"vm": rpcchainvm.New(&timestampvm.VM{}),
+			"vm": rpcchainvm.New(&countervm.VM{}),
 		},
 
 		// A non-nil value here enables gRPC serving for this plugin...
